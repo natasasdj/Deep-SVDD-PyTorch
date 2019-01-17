@@ -97,11 +97,11 @@ class DeepSVDDTrainer(BaseTrainer):
 
             # log epoch statistics
             epoch_train_time = time.time() - epoch_start_time
-            logger.info('  Epoch {}/{}\t Time: {:.3f}\t Loss: {:.8f}'
-                        .format(epoch + 1, self.n_epochs, epoch_train_time, loss_epoch / n_batches))
+            #logger.info('  Epoch {}/{}\t Time: {:.3f}\t Loss: {:.8f}'
+            #            .format(epoch + 1, self.n_epochs, epoch_train_time, loss_epoch / n_batches))
 
         self.train_time = time.time() - start_time
-        logger.info('Training time: %.3f' % self.train_time)
+        #logger.info('Training time: %.3f' % self.train_time)
 
         logger.info('Finished training.')
 
@@ -149,7 +149,6 @@ class DeepSVDDTrainer(BaseTrainer):
 
         self.test_auc = roc_auc_score(labels, scores)
         logger.info('Test set AUC: {:.2f}%'.format(100. * self.test_auc))
-
         logger.info('Finished testing.')
 
     def init_center_c(self, train_loader: DataLoader, net: BaseNet, eps=0.1):
