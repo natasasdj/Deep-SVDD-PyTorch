@@ -1,6 +1,7 @@
 from torch.utils.data import Subset
 from PIL import Image
-from torchvision.datasets import CIFAR100
+#from torchvision.datasets import CIFAR100
+from datasets.coarseCifar100 import CoarseCIFAR100
 from base.torchvision_dataset import TorchvisionDataset
 from .preprocessing import get_target_label_idx, global_contrast_normalization
 
@@ -48,7 +49,7 @@ class CIFAR100_Dataset(TorchvisionDataset):
                                   transform=transform, target_transform=target_transform)
 
 
-class MyCIFAR100(CIFAR100):
+class MyCIFAR100(CoarseCIFAR100):
     """Torchvision CIFAR100 class with patch of __getitem__ method to also return the index of a data sample."""
 
     def __init__(self, *args, **kwargs):

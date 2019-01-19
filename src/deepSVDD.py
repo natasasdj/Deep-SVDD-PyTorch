@@ -143,16 +143,16 @@ class DeepSVDD(object):
         with open(export_json, 'w') as fp:
             json.dump(self.results, fp)
     
-    def save_results_2(self, fdir):
+    def save_results_2(self, fdir, normal_class):
         if not os.path.exists(fdir):
             os.makedirs(fdir)
         fname = os.path.join(fdir, 'testTime')
         with open(fname, 'a+')   as f:
-                f.write('%.3f' % self.results['test_time'])
+                f.write('%d,%.5f' % (normal_class, self.results['test_time']))
                 f.write(' ')
         fname = os.path.join(fdir, 'auc')
         with open(fname, 'a+')   as f:
-                f.write('{:.1f}'.format(100. * self.results['test_auc']))
+                f.write('{},{:.3f}'.format(normal_class, 100. * self.results['test_auc']))
                 f.write(' ')
 
 
